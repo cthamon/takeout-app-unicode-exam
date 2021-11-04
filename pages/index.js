@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-// import { server } from '../config/';
-import { menu } from '../data/menu';
+import { server } from '../config/';
 import MenuItem from '../component/MenuItem';
 
-export default function Home() {
+export default function Home({ menu }) {
   const { cart } = useSelector(state => state);
   return (
     <div>
@@ -23,13 +22,13 @@ export default function Home() {
   );
 }
 
-// export const getStaticProps = async () => {
-//   const res = await fetch(`${server}/api/menu`);
-//   const menu = await res.json();
+export const getStaticProps = async () => {
+  const res = await fetch(`${server}/api/menu`);
+  const menu = await res.json();
 
-//   return {
-//     props: {
-//       menu
-//     }
-//   };
-// };
+  return {
+    props: {
+      menu
+    }
+  };
+};

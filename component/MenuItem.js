@@ -1,14 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { increment, decrement } from '../store/slices/counterSlice';
+import { increment, decrement, setInitialState } from '../store/slices/counterSlice';
 import { addToCart, deleteFromCart } from '../store/slices/cartSlice';
 
 import styles from '../styles/MenuItem.module.css';
+import { useEffect } from 'react';
 
 const MenuItem = ({ item, index }) => {
     const dispatch = useDispatch();
-    const { counter } = useSelector(state => state);
+
+    const { counter, loading } = useSelector(state => state.counter);
     const { cart } = useSelector(state => state);
+
+    useEffect(() => {
+        dispatch(setInitialState());
+    }, []);
+
+    if (loading) return (<h4>Loading...</h4>);
 
     return (
         <div className={styles.card}>

@@ -1,10 +1,9 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { increment, decrement, setInitialState } from '../store/slices/counterSlice';
 import { addToCart, deleteFromCart } from '../store/slices/cartSlice';
-
 import styles from '../styles/MenuItem.module.css';
-import { useEffect } from 'react';
 
 const MenuItem = ({ item, index }) => {
     const dispatch = useDispatch();
@@ -14,24 +13,28 @@ const MenuItem = ({ item, index }) => {
 
     useEffect(() => {
         dispatch(setInitialState());
-    }, []);
+    }, [dispatch]);
 
     if (loading) return (<h4>Loading...</h4>);
 
     return (
         <div className={styles.card}>
-            <img src={item.imgSrc} alt={item.name} />
-            <h4>{item.name}</h4>
-            <p>{item.description}</p>
-            <div>
-                <button disabled={cart.some(cartItem => item.id === cartItem.id)} onClick={() => dispatch(decrement(item.id))}>-</button>
-                {counter[index].quantity}
-                <button disabled={cart.some(cartItem => item.id === cartItem.id)} onClick={() => dispatch(increment(item.id))}>+</button>
+            <div className={styles.imgBoard}>
+                <img src={item.imgSrc} alt={item.name} />
+            </div>
+            <div className={styles.description}>
+                <h4>{item.name}</h4>
+                <p>{item.description}</p>
+                <div className={styles.counter}>
+                    <button disabled={cart.some(cartItem => item.id === cartItem.id)} onClick={() => dispatch(decrement(item.id))}>-</button>
+                    <span>{counter[index].quantity}</span>
+                    <button disabled={cart.some(cartItem => item.id === cartItem.id)} onClick={() => dispatch(increment(item.id))}>+</button>
+                </div>
             </div>
             {
                 cart.some(cartItem => item.id === cartItem.id) ?
-                    <button disabled><span onClick={() => dispatch(deleteFromCart(item.id))}>x</span> Added {counter[index].quantity}</button> :
-                    <button onClick={() => dispatch(addToCart({ ...item, quantity: counter[index].quantity }))}>Add {(item.price * counter[index].quantity).toFixed(2)}</button>
+                    <div className={styles.cart}><button disabled><span onClick={() => dispatch(deleteFromCart(item.id))}><div className={styles.circle}>x</div></span> Added {counter[index].quantity}</button></div> :
+                    <div className={styles.cart}><button onClick={() => dispatch(addToCart({ ...item, quantity: counter[index].quantity }))}>Add {(item.price * counter[index].quantity).toFixed(2)}</button></div>
             }
         </div>
     );

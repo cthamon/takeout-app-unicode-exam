@@ -1,0 +1,185 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.grid h3, .grid p {
+  margin: 10px;
+}
+
+.grid button {
+  color: #fff;
+  font-weight: 700;
+  background-color: #EB2E46;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.grid button:hover {
+  background-color: #990f22;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* width: 100%; */
+}
+
+.card {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card button:disabled {
+  color: #691E28;
+  font-weight: 700;
+  background-color: #F2C9C7;
+}
+
+span .circle {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  line-height: 11px;
+  border-radius: 50%;
+  font-size: 8px;
+  border: 1px solid #691E28;
+}
+
+.imgBoard {
+  background-color: #eee;
+  border-radius: 20%;
+  width: 150px;
+  height: 150px;
+}
+
+.imgBoard img {
+  border-radius: 20%;
+  width: 150px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0
+}
+
+.description h4, .description p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.description > p {
+  color: #888;
+}
+
+.counter {
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 10px 0
+}
+
+.counter span{
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+}
+
+.counter button {
+  color: #000;
+  font-weight: 400;
+  background-color: #eee;
+  padding: 5px
+}
+
+.counter button:hover {
+  background-color: #ccc;
+}
+
+.counter button:disabled {
+  color: #000;
+  background-color: #eee;
+}
+
+.cart button {
+  width: 93.23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart button:disabled {
+  justify-content: space-between;
+}
+
+.cart span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.cartButton {
+  width: 400px;
+  margin-top: 30px;
+}
+
+.cartButton img{
+  width: 15px;
+  filter: brightness(1) contrast(300%) invert(1);
+}
+
+sup .circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  line-height: 11px;
+  border-radius: 50%;
+  font-size: 8px;
+  background-color: #fff;
+  color: #EB2E46;
+  position: relative;
+  right: 5px;
+  bottom: 5px;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+  }
+
+  .imgBoard {
+    background-color: #eee;
+    border-radius: 20%;
+    width: 87px;
+    height: 87px;
+  }
+
+  .imgBoard img {
+    border-radius: 20%;
+    width: 87px;
+  }
+
+  .card {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .description {
+    align-items: flex-start;
+  }
+
+  .cartButton {
+    width: 100%;
+  }
+}

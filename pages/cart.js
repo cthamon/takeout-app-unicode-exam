@@ -2,25 +2,52 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 import CartItem from '../component/CartItem';
+import Clock from '../component/Clock';
+import styles from '../styles/CartItem.module.css';
 
 const Cart = () => {
     const { cart } = useSelector(state => state);
 
     const subtotal = (Math.round(cart.reduce((sum, cartItem) => sum + (cartItem.price * cartItem.quantity), 0) * 100) / 100).toFixed(2);
-    const delivery = (Math.round((Math.random() * 3) * 100) / 100).toFixed(2);
+    const delivery = 1.99;
     const taxes = (subtotal * 0.1).toFixed(2);
 
     return (
-        <div>
-            <h4>Your Order</h4>
-            <Link href='/'>Add item +</Link>
+        <div className={styles.grid}>
+            <div>
+                <Link href='/'><img src='/images/back-icon.png' alt='back' /></Link>
+                <h3>Express Cart</h3>
+            </div>
             <hr />
+            <div className={styles.head}>
+                <h3>Your Order</h3>
+                <Link href='/'><p>Add item +</p></Link>
+            </div>
             {cart.map(item => <CartItem key={item.id} item={item} />)}
-
-            <h4>Summary</h4>
-            <p>Subtotal ${subtotal}</p>
-            <p>Delivery ${delivery}</p>
-            <p>Taxes ${taxes}</p>
+            <div className={styles.summaryHead}>
+                <h3>Summary</h3>
+                <Clock />
+            </div>
+            <div className={styles.promotion}>
+                <img src='/favicon.ico' alt='icon' />
+                <p>Earn credits by playing trivia after checkout!</p>
+            </div>
+            <div className={styles.summaryItem}>
+                <p>Subtotal </p>
+                <p>${subtotal}</p>
+            </div>
+            <div className={styles.summaryItem}>
+                <p>Delivery </p>
+                <p>${delivery}</p>
+            </div>
+            <div className={styles.summaryItem}>
+                <p>Taxes </p>
+                <p>${taxes}</p>
+            </div>
+            <div className={styles.summaryLast}>
+                <p>Total </p>
+                <p>${(+subtotal + +delivery + +taxes).toFixed(2)}</p>
+            </div>
             <Link href='/checkout'><button>Begin Checkout</button></Link>
         </div>
     );

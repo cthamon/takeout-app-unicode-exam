@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .main {
+    width: 100%;
+  }
+}

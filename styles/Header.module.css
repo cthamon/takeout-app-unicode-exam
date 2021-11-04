@@ -1,0 +1,44 @@
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.grid h3, .grid p {
+  margin: 10px;
+}
+
+.restaurant {
+  color: #EB2E46;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.clockFrame {
+  padding: 10px 5px;
+  border: 2px solid #EB2E46;
+  border-radius: 15px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clockFrame h2, .clockFrame p {
+  color: #EB2E46;
+  margin: 0px;
+}
+
+
+@media (max-width: 600px) {
+  .grid {
+      width: auto;
+  }
+}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 
 import CartItem from '../component/CartItem';
 import Clock from '../component/Clock';
@@ -15,13 +16,13 @@ const Cart = () => {
     return (
         <div className={styles.grid}>
             <div>
-                <Link href='/'><img src='/images/back-icon.png' alt='back' /></Link>
+                {/* <Link href='/' passHref><Image src='/images/back-icon.png' alt='back' width='30px' height='30px' /></Link> */}
                 <h3>Express Cart</h3>
             </div>
             <hr />
             <div className={styles.head}>
                 <h3>Your Order</h3>
-                <Link href='/'><p>Add item +</p></Link>
+                <Link href='/' passHref><p>Add item +</p></Link>
             </div>
             {cart.map(item => <CartItem key={item.id} item={item} />)}
             <div className={styles.summaryHead}>
@@ -29,7 +30,7 @@ const Cart = () => {
                 <Clock />
             </div>
             <div className={styles.promotion}>
-                <img src='/favicon.ico' alt='icon' />
+                <Image src='/favicon.ico' alt='icon' width='20px' height='20px' />
                 <p>Earn credits by playing trivia after checkout!</p>
             </div>
             <div className={styles.summaryItem}>
@@ -48,7 +49,7 @@ const Cart = () => {
                 <p>Total </p>
                 <p>${(+subtotal + +delivery + +taxes).toFixed(2)}</p>
             </div>
-            <Link href='/checkout'><button>Begin Checkout</button></Link>
+            <Link href='/checkout' passHref><button>Begin Checkout</button></Link>
         </div>
     );
 };

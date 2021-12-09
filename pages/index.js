@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import Image from 'next/image';
 import useSWR from "swr";
 
 import { server } from '../config/';
@@ -27,7 +26,7 @@ export default function Home() {
         <Link href='/cart' passHref>
           <button className={styles.cartButton}>
             View Cart - ${(Math.round(cart.reduce((sum, cartItem) => sum + (cartItem.price * cartItem.quantity), 0) * 100) / 100).toFixed(2)}
-            <Image src='/images/cart-icon.png' alt='cart-icon' width='15px' height='15px' />
+            <img src='/images/cart-icon.png' alt='cart-icon' />
             <sup><div className={styles.circle}> {cart.reduce((sum, cartItem) => sum + cartItem.quantity, 0)}</div></sup>
           </button>
         </Link>

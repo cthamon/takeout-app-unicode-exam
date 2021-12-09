@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import Image from 'next/image';
 
 import CartItem from '../component/CartItem';
 import Clock from '../component/Clock';
@@ -16,7 +15,7 @@ const Cart = () => {
     return (
         <div className={styles.grid}>
             <div>
-                {/* <Link href='/' passHref><Image src='/images/back-icon.png' alt='back' width='30px' height='30px' /></Link> */}
+                <Link href='/' passHref><img src='/images/back-icon.png' alt='back' /></Link>
                 <h3>Express Cart</h3>
             </div>
             <hr />
@@ -30,7 +29,7 @@ const Cart = () => {
                 <Clock />
             </div>
             <div className={styles.promotion}>
-                <Image src='/favicon.ico' alt='icon' width='20px' height='20px' />
+                <img src='/favicon.ico' alt='icon' />
                 <p>Earn credits by playing trivia after checkout!</p>
             </div>
             <div className={styles.summaryItem}>

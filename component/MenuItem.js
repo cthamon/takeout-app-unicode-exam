@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from 'next/image';
 
 import { increment, decrement, setInitialState } from '../store/slices/counterSlice';
 import { addToCart, deleteFromCart } from '../store/slices/cartSlice';
@@ -21,7 +20,7 @@ const MenuItem = ({ item, index }) => {
     return (
         <div className={styles.card}>
             <div className={styles.imgBoard}>
-                <Image src={item.imgSrc} alt={item.name} width='150px' height='150px' />
+                <img src={item.imgSrc} alt={item.name} />
             </div>
             <div className={styles.description}>
                 <h4>{item.name}</h4>
